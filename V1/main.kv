@@ -1,0 +1,89 @@
+<TimeLabel@Label>
+    font_size: "100sp"
+    font_name: "Oldtimer.ttf"
+
+<DateLabel@Label>
+    font_size: "18sp"
+    font_name: "Oldtimer.ttf"
+
+<BatteryFill@Widget>
+    canvas:
+        RoundedRectangle:
+            size: self.width, self.height
+            pos: self.pos
+            radius: [10,]
+
+<BatteryBody@Widget>
+    canvas:
+        Line:
+            width: 3
+            rounded_rectangle: self.x, self.y, self.width, self.height, 10
+
+<BatteryHat@Widget>
+    canvas:
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [20,]
+
+
+<PercentageLabel@Label>
+    font_size: "18sp"
+    font_name: "Oldtimer.ttf"
+
+<BatteryWidget@RelativeLayout>
+    BatteryBody:
+        id: body
+        size_hint: None, None
+        size: "45dp", "20dp"
+        pos: (root.width * 0.5) - (self.width * 0.5), (root.height * 0.5) - (self.height * 0.5)
+    BatteryHat:
+        size_hint: None, None
+        size: "5dp", "10dp"
+        pos: (root.width * 0.5) + body.width * 0.55, (root.height * 0.5) - (self.height * 0.5)
+    BatteryFill:
+        id: fill
+        size_hint: None, None
+        size: "43dp", "18dp"
+        pos: (root.width * 0.5) - (body.width * 0.48), (root.height * 0.5) - (self.height * 0.5)
+
+<ChargingStatusLabel@Label>
+    font_size: "12sp"
+    font_name: "Oldtimer.ttf"
+
+<AlwaysOnDisplay@GridLayout>
+    rows: 5
+
+    TimeLabel:
+        id: hour_label
+        text: "10"
+        size_hint_y: None
+        height: "95dp"
+    TimeLabel:
+        id: minute_label
+        text: "01"
+        size_hint_y: None
+        height: "95dp"
+    DateLabel:
+        id: date_label
+        text: "WED 10 JUL"
+        size_hint_y: None
+        height: "30dp"
+    PercentageLabel:
+        id: percentage_label
+        text: "80%"
+        size_hint_y: None
+        height: "30dp"
+    ChargingStatusLabel:
+        id: charging_label
+        text: "charging"
+        size_hint_y: None
+        height: "125dp"
+
+
+<MainScreen>:
+    AlwaysOnDisplay:
+        id: aod
+        size_hint: None, None
+        size: "180dp", "350dp"
+        pos: (root.width * 0.5) - (self.width * 0.5), (root.height * 0.5) - (self.height * 0.25)
